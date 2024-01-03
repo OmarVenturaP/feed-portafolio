@@ -18,6 +18,40 @@
         Portafolio
       </h1>
     </div>
+    <div
+      class="mx-32 h-full justify-center flex flex-wrap"
+      x-data="mostrarProyectos()"
+    >
+      <template class="mx-auto" id="container" x-for="proyecto in proyectos">
+        <div
+          class="m-1 relative w-64 h-64 hover:scale-105 transition-all duration-500 ease-in-out hover:shadow-2xl z-10 rounded"
+          x-data="{ open: false }"
+          @mouseover="open = true"
+          @mouseleave="open = false"
+        >
+          <img
+            class="absolute object-cover w-full h-full"
+            :src="proyecto.img"
+            :alt="proyecto.nombre"
+          />
+          <div
+            class="absolute bg-fuchsia-500 bg-opacity-60 box-border h-full w-full p-4"
+            x-show="open"
+          >
+            <div class="p-3 z-10 border border-slate-50 w-full h-full">
+              <div
+                class="font-bold text-white text-md pb-3 text-center"
+                x-text="proyecto.nombre"
+              ></div>
+              <p
+                class="text-white overflow-auto h-40"
+                x-text="proyecto.descripcion"
+              ></p>
+            </div>
+          </div>
+        </div>
+      </template>
+    </div>
     <script src="app.js"></script>
   </body>
 </html>
